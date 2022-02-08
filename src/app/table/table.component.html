@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="div">
+        <input class="btn btn-succes" type="button" value="Get All Record" (click)="getAllData()">
+    </div>
+    <h4 class="center">
+        <p style="color: rgb(4, 4, 82);">
+            <strong>
+                Top crypto exchanges
+            </strong>
+        </p>
+    </h4>
+    <p class="center" style="color: rgb(83, 83, 145); font-weight: bold;">
+        Compare 190 crypto excahanges. The list is ranked by trading volume
+    </p>
+    <input style="border-radius: 10px;" class="form-control" type="search" placeholder="Search" aria-label="Search"
+        [(ngModel)]="searchTerm">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">Exchanges</th>
+                <th scope="col">24 hour trade volume</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let tradeRef of tradeRefs | sort | filter:searchTerm | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+                <td>
+                    <span>
+                        {{i+1}}
+                    </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-ml">
+                        <img src="{{tradeRef.url}}" width="20px">
+                    </span>
+                    &nbsp;
+                    <span>
+                        {{tradeRef.exchange_id}}
+                    </span>
+                </td>
+                <td>
+                    <!-- {{tradeRef.exchange_id}} -->
+                </td>
+            </tr>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </tbody>
+    </table>
+</div>
