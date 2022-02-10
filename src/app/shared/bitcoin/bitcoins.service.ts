@@ -12,11 +12,11 @@ export class BitcoinsService {
   constructor(private http: HttpClient) { }
 
   getExchages(): Observable<any> {
-    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges?apikey=4BEB5857-A77E-4027-801A-E954FA3CA51E');
+    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges?apikey=CB1D352F-23E7-4D64-97AC-FB5AEF4839F');
   }
 
   getIcons(): Observable<any> {
-    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges/icons/32?apikey=4BEB5857-A77E-4027-801A-E954FA3CA51E');
+    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges/icons/32?apikey=CB1D352F-23E7-4D64-97AC-FB5AEF4839F');
   }
 
   storeExchanges(data: any): Observable<any> {

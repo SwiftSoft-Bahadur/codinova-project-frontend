@@ -23,24 +23,31 @@
         </thead>
         <tbody>
             <tr
-                *ngFor="let tradeRef of tradeRefs | sort | filter:searchTerm | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+                *ngFor="let tradeRef of tradeRefs | filter:searchTerm | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
                 <td>
-                    <span>
-                        {{i+1}}
-                    </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{i+1}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="text-ml">
                         <img src="{{tradeRef.url}}" width="20px">
                     </span>
                     &nbsp;
-                    <span>
-                        {{tradeRef.exchange_id}}
-                    </span>
+                    {{tradeRef.exchange_id}}
                 </td>
                 <td>
                     <!-- {{tradeRef.exchange_id}} -->
                 </td>
             </tr>
             <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </tbody>
+    </table>
+
+
+    <table>
+        <thead></thead>
+        <tbody>
+            <tr *ngFor="let item of data">
+                <td>{{item}}</td>
+            </tr>
         </tbody>
     </table>
 </div>

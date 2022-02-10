@@ -2077,23 +2077,17 @@ export class TableComponent implements OnInit {
   constructor(private _bitcon: BitcoinsService) { }
   ngOnInit(): void {
     this._bitcon.getExchages().subscribe(res => {
-      this._bitcon.getIcons().subscribe(res2 => {
-        let d1=JSON.stringify(res)
-        let d2=JSON.stringify(res2)
-        this._bitcon.storeExchanges({ exchange_id:d1 , url: d2 }).subscribe(() => console.log(
+        this._bitcon.storeExchanges({ exchange_id: res.toString()}).subscribe(() => console.log(
           "stored"
         )
         )
-      })
     })
 
   }
 
   getAllData() {
-    this._bitcon.getMyDbStockData().subscribe((res) => {
-      console.log();
-
-    })
+    this._bitcon.getMyDbStockData().subscribe((res) => this.data = res)
+    this._bitcon.getMyDbStockData().subscribe((res) => console.log(res))
   }
 
 }
