@@ -8,22 +8,20 @@ import { Observable } from 'rxjs';
 export class BitcoinsService {
   API_URL = 'http://localhost:8080/api/stocks'
 
-
   constructor(private http: HttpClient) { }
-
+  // Getting data from coinApi
   getExchages(): Observable<any> {
-    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges?apikey=CB1D352F-23E7-4D64-97AC-FB5AEF4839F');
+    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges');
   }
 
   getIcons(): Observable<any> {
-    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges/icons/32?apikey=CB1D352F-23E7-4D64-97AC-FB5AEF4839F');
+    return this.http.get<any>('https://rest.coinapi.io/v1/exchanges/icons/32');
   }
 
-  storeExchanges(data: any): Observable<any> {
-    return this.http.post(this.API_URL, data)
+  // Store on local database
+  storeIcons(data: any): Observable<any> {
+    return this.http.post("http://localhost:8080/api/stocks/icons", data)
   }
+  
 
-  getMyDbStockData() {
-    return this.http.get(this.API_URL);
-  }
 }

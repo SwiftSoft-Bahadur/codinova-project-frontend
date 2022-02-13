@@ -1,8 +1,5 @@
 <div class="container">
-    <div class="div">
-        <input class="btn btn-succes" type="button" value="Get All Record" (click)="getAllData()">
-    </div>
-    <h4 class="center">
+      <h4 class="center">
         <p style="color: rgb(4, 4, 82);">
             <strong>
                 Top crypto exchanges
@@ -23,7 +20,7 @@
         </thead>
         <tbody>
             <tr
-                *ngFor="let tradeRef of tradeRefs | filter:searchTerm | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+                *ngFor="let tradeRef of icons | filter:searchTerm | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
                 <td>
                     {{i+1}}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -34,7 +31,7 @@
                     {{tradeRef.exchange_id}}
                 </td>
                 <td>
-                    <!-- {{tradeRef.exchange_id}} -->
+                    {{tradeRef.volume_1day_usd}}
                 </td>
             </tr>
             <pagination-controls (pageChange)="p = $event"></pagination-controls>
@@ -42,12 +39,13 @@
     </table>
 
 
-    <table>
+    <!-- <table>
         <thead></thead>
         <tbody>
             <tr *ngFor="let item of data">
                 <td>{{item}}</td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 </div>
+
